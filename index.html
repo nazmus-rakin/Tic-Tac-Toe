@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neon Tic-Tac-Toe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+
+  <main class="app">
+    <!-- ===== Welcome screen ===== -->
+    <section id="welcome" class="screen active">
+      <div class="logo"><span class="x">X</span><span class="o">O</span></div>
+      <h1>Tic-Tac-Toe</h1>
+      <p class="sub">Line up three to win. Pick how you want to play.</p>
+
+      <div class="card">
+        <h2>Game mode</h2>
+        <div class="seg" id="modeSeg">
+          <button class="seg-btn active" data-mode="pvp">Two Players</button>
+          <button class="seg-btn" data-mode="cpu">Vs Computer</button>
+        </div>
+        <div id="diffWrap" class="hidden">
+          <h2>Difficulty</h2>
+          <div class="seg" id="diffSeg">
+            <button class="seg-btn" data-diff="easy">Easy</button>
+            <button class="seg-btn active" data-diff="medium">Medium</button>
+            <button class="seg-btn" data-diff="hard">Hard</button>
+          </div>
+        </div>
+        <button id="startBtn" class="btn primary big">Start game</button>
+      </div>
+    </section>
+
+    <!-- ===== Game screen ===== -->
+    <section id="game" class="screen">
+      <header class="topbar">
+        <button id="menuBtn" class="btn ghost small" aria-label="Back to menu">Menu</button>
+        <span id="modeLabel" class="chip"></span>
+        <button id="muteBtn" class="btn ghost small" aria-label="Toggle sound" aria-pressed="false">Sound on</button>
+      </header>
+
+      <div class="scoreboard">
+        <div class="score x-score" id="scoreXBox"><span class="s-name" id="nameX">Player X</span><span class="s-val" id="scoreX">0</span></div>
+        <div class="score d-score"><span class="s-name">Draws</span><span class="s-val" id="scoreD">0</span></div>
+        <div class="score o-score" id="scoreOBox"><span class="s-name" id="nameO">Player O</span><span class="s-val" id="scoreO">0</span></div>
+      </div>
+
+      <p id="status" class="status" aria-live="polite"></p>
+
+      <div id="board" class="board" role="grid" aria-label="Tic-Tac-Toe board"></div>
+
+      <div class="controls">
+        <button id="newRoundBtn" class="btn primary">New Round</button>
+        <button id="restartBtn" class="btn">Restart Game</button>
+        <button id="resetBtn" class="btn danger">Reset Score</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Winner popup ===== -->
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-labelledby="resultTitle">
+      <div id="resultIcon" class="result-icon"></div>
+      <h2 id="resultTitle"></h2>
+      <p id="resultText"></p>
+      <button id="nextBtn" class="btn primary">Play next round</button>
+    </div>
+  </div>
+
+  <!-- ===== Reset confirmation ===== -->
+  <div id="confirmModal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-labelledby="confirmTitle">
+      <h2 id="confirmTitle">Reset all scores?</h2>
+      <p>Wins and draws will go back to zero. This can't be undone.</p>
+      <div class="row">
+        <button id="confirmNo" class="btn">Keep scores</button>
+        <button id="confirmYes" class="btn danger">Reset scores</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
